@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Intro from '../../components/Intro';
 import SeriesList from '../../components/SeriesList';
 import Loader from '../../components/Loader';
 
@@ -14,7 +15,7 @@ class Series extends Component {
   	this.setState ({ seriesName: e.target.value, isFetching: true});
 
   	fetch(`http://api.tvmaze.com/search/shows?q=${e.target.value}`)
-    .then((response) => response.json())
+    .then(response => response.json())
     .then(json => this.setState({ series: json, isFetching: false }));
   }
 
@@ -23,6 +24,7 @@ class Series extends Component {
 
 		return (
 			<div>
+				<Intro message="Here you can find all of your most loved TV series from tvmaze.com"/>
 				<div>
 					<input 
 					value={seriesName}
